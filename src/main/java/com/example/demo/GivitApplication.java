@@ -11,6 +11,6 @@ public class GivitApplication {
 	}
 
 	public static void testpushTobbe(){
-		System.out.println("testt");
+		System.out.println("test");
 	}
 }
