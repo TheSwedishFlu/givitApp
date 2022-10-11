@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.sql.DataSource;
 
-public class UserController {
+public class AccountController {
 
 
     @Controller
     public class ItemController {
 
-        Logger logger = LoggerFactory.getLogger(UserController.class);
+        Logger logger = LoggerFactory.getLogger(AccountController.class);
 
         @Autowired
         private DataSource dataSource;

@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS account;
+
+CREATE TABLE account (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   name VARCHAR(25) NULL ,
+   orgnr INT NOT NULL,
+   city VARCHAR(25) NULL,
+   email VARCHAR(25) NULL,
+   password VARCHAR(25) NULL
+);
+
+DROP TABLE IF EXISTS items;
+
+CREATE TABLE items (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   name VARCHAR(25) NULL,
+   category VARCHAR(25) NULL,
+   location VARCHAR(25) NULL,
+   qty INT NOT NULL,
+   delivery_type VARCHAR(25) NULL
+);

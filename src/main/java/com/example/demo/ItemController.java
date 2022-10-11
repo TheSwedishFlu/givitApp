@@ -9,18 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.sql.DataSource;
-
 
 @Controller
 public class ItemController {
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     @Autowired
     ItemRepository itemRepository;
     @Autowired
-    UserRepository userRepository;
+    AccountRepository accountRepository;
     @GetMapping("/")
     String start() {
         logger.info("start is running");
@@ -59,9 +57,17 @@ public class ItemController {
     }
 
     @GetMapping("/registerUser")
-    String registerUser(){
+    String registerUser(Model model){
+        model.addAttribute("newAccount",new Account());
         logger.info("registerUser is running");
         return "registerUser";
+    }
+    @PostMapping("/save")
+    public String set(@ModelAttribute Account account) {
+        System.out.println("save is running");
+        accountRepository.save(account);
+        System.out.println("saved it");
+        return "redirect:/";
     }
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,29 +11,30 @@
 <h2>Create a new user</h2>
 <br>
 
-<form>
+<form th:object="${newAccount}" action="/save" method="POST">
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Company</label>
-        <input type="text" class="form-control" id="2">
+        <input type="text" class="form-control" id="2" th:field="*{name}"/>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Adress</label>
-        <input type="text" class="form-control" id="3">
+        <input type="text" class="form-control" id="3" th:field="*{city}"/>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Org No</label>
-        <input type="text" class="form-control" id="4">
+        <input type="text" class="form-control" id="4" th:field="*{orgnr}"/>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{email}"/>
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="password" class="form-control" id="exampleInputPassword1" th:field="*{password}"/>
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <input type="hidden" th:if="${newAccount.id != null}" th:field="*{id}"/>
+        <button type="submit" value="Save account" class="btn btn-primary">Submit</button>
     </div>
 
 
