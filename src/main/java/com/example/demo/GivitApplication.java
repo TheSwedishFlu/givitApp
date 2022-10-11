@@ -10,4 +10,7 @@ public class GivitApplication {
 		SpringApplication.run(GivitApplication.class, args);
 	}
 
+	public static void testpushTobbe(){
+		System.out.println("test");
+	}
 }
