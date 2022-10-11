@@ -19,11 +19,9 @@ public class UserController {
         @Autowired
         private DataSource dataSource;
 
-        @GetMapping("/registerUser")
-        String registerUser(){
-            logger.info("registerUser is running");
-            return "registerUser";
-        }@GetMapping("/myAccount")
+
+
+        @GetMapping("/myAccount")
         String myAccount(){
             logger.info("myAccount is running");
             return "myAccount";

@@ -58,4 +58,10 @@ public class ItemController {
         return "givitTeam";
     }
 
+    @GetMapping("/registerUser")
+    String registerUser(){
+        logger.info("registerUser is running");
+        return "registerUser";
+    }
+
 }
