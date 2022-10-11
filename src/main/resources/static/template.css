@@ -12,3 +12,23 @@ h3{
     justify-content: center;
     margin-top: 100px;
    }
+
+   .itemLink {
+       color: inherit !important;
+       text-decoration: none !important;
+
+   }
+    div.card.mb-4{
+        display:flex;
+        flex-direction: column;
+        align-item: center;
+    }
+   div.container-fluid{
+        display:flex;
+        flex-direction: column;
+   }
+
+   .navbar-nav{
+        display:flex;
+        flex-direction: row;
+        }
