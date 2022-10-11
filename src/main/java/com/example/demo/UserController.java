@@ -19,10 +19,15 @@ public class UserController {
         @Autowired
         private DataSource dataSource;
 
-        @GetMapping("/")
-        String start() {
-            logger.info("Logging is running");
-            return "startpage";
+        @GetMapping("/registerUser")
+        String registerUser(){
+            logger.info("registerUser is running");
+            return "registerUser";
+        }@GetMapping("/myAccount")
+        String myAccount(){
+            logger.info("myAccount is running");
+            return "myAccount";
+
         }
 
     }
