@@ -1,15 +1,14 @@
 h3{
-    font-size: 30px;
-    margin-left: 110px;
-    text-transform: uppercase;
-    font-family: Bahnschrift SemiBold;
+
 }
 
 .givitTeam {
-           font-family: Bahnschrift Light;
-           color: black;
-
-           display: flex;
-           justify-content: center;
-           margin-top: 120px;
-           }
+    margin-left: 110px;
+    text-transform: uppercase;
+    font-family: Bahnschrift SemiBold;
+    font-size: 35px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+   }
