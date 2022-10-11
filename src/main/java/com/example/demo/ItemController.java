@@ -22,19 +22,19 @@ public class ItemController {
         return "startpage";
     }
 
-    @GetMapping("/iteam")
-    String itempage(){
+    @GetMapping("/item")
+    String itemPage(){
         logger.info("itempage is running");
-        return "iteamPage";
+        return "itemPage";
     }
-    @GetMapping("/iteamCreat")
-    String iteamCreat(){
-        logger.info("iteamCreat is running");
-        return "createIteam";
+    @GetMapping("/createItem")
+    String itemCreate(){
+        logger.info("itemCreate is running");
+        return "createItem";
     }
-    @GetMapping("/iteamDetails")
-    String iteamDetails(){
-        logger.info("iteamDetails is running");
+    @GetMapping("/itemDetails")
+    String itemDetails(){
+        logger.info("itemDetails is running");
         return "itemDetails";
     }
 
