@@ -38,4 +38,10 @@ public class ItemController {
         return "itemDetails";
     }
 
+    @GetMapping("/givitTeam")
+    String givitTeam(){
+        logger.info("givitTeam is running");
+        return "givitTeam";
+    }
+
 }
