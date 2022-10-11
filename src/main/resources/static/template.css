@@ -1,6 +1,6 @@
 h2{
-margin-left: 30px;
-font-family: Bahnschrift SemiBold;
+    margin-left: 30px;
+    font-family: Bahnschrift SemiBold;
 }
 
 .givitTeam {
@@ -20,8 +20,7 @@ font-family: Bahnschrift SemiBold;
 }
 
 .mb-3{
-
     margin-left: 30px;
     margin-right: 50%;
-
 }
+
