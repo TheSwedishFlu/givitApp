@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.Entity;
