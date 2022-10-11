@@ -14,11 +14,11 @@ public class ItemController {
 
     @Autowired
     private DataSource dataSource;
-
     @GetMapping("/")
     String start() {
         logger.info("Logging is running");
         return "startpage";
     }
+
 
 }
