@@ -15,4 +15,11 @@ Derya: itemPage
 Tobias: databas - skapa grunddata 
 Mohamed:myAccount
 Haidar:itemDetails
-Ulf: registerUser, startpage
+Ulf: registerUser, startpage ✓
+
+**Who´s doing what today? 12/10**
+Derya:
+Tobias:
+Mohamed:
+Haidar:
+Ulf:
