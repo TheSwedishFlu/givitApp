@@ -35,23 +35,23 @@
     </div>
 </nav>
 
-<div class="dropdown" method="post">
+<div class="dropdown" action="/items" method="post">
     Filter: <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          City
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <p class="dropdown-item" href="#" value="Göteborg">Göteborg</p>
-        <p class="dropdown-item" href="#" value="Malmö">Malmö</p>
-        <p class="dropdown-item" href="#" value="Stockholm">Stockholm</p>
-        <p class="dropdown-item" href="#" value="Övriga">Övriga</p>
+        <p class="dropdown-item" href="#" name="city" value="Göteborg">Göteborg</p>
+        <p class="dropdown-item" href="#" name="city" value="Malmö">Malmö</p>
+        <p class="dropdown-item" href="#" name="city" value="Stockholm">Stockholm</p>
+        <p class="dropdown-item" href="#" name="city" value="Övriga">Övriga</p>
     </div>
 </div>
 
-<div class="input-group mb-3" method="post">
+<div class="input-group mb-3" action="/items" method="post">
     <div class="input-group-prepend">
         <div class="input-group-text">
-            Delivery type: <input type="checkbox" aria-label="Checkbox for following text input"> Pick-Up
-            <input type="checkbox" aria-label="Checkbox for following text input"> Delivery
+            Delivery type: <input type="checkbox" aria-label="Checkbox for following text input" value="Pick-up" name="delivery"> Pick-Up
+            <input type="checkbox" aria-label="Checkbox for following text input" value="delivery" name="delivery"> Delivery
         </div>
     </div>
 </div>

@@ -40,6 +40,8 @@ public class ItemController {
 
     @PostMapping("/items")
     String itemsPage(@ModelAttribute List<Item> items, Model model){
+        String location = (String) model.getAttribute("city");
+        String deliveryType= (String) model.getAttribute("delivery");
 
         return "itemPage";
     }
