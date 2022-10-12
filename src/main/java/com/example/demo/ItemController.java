@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.util.List;
 
@@ -75,5 +77,18 @@ public class ItemController {
         System.out.println("saved it");
         return "redirect:/";
     }
+
+    @PostMapping("/login")
+    public String Login(HttpSession session, @RequestParam String Username, @RequestParam String Password){
+        if (Username.equals("Mohamed") && Password.equals("123")) {
+            session.setAttribute("Username", Username);
+            return "itemsPage";
+        }
+
+        return "redirect:/";
+    }
+
+
+
 
 }
