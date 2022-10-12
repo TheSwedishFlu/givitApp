@@ -38,11 +38,11 @@ public class ItemController {
         return "itemPage";
     }
 
-   /* @PostMapping("/items")
+    @PostMapping("/items")
     String itemsPage(@ModelAttribute List<Item> items, Model model){
 
         return "itemPage";
-    }*/
+    }
 
     @GetMapping("/createItem")
     String itemCreate(){

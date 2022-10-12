@@ -12,4 +12,8 @@ public interface ItemRepository extends CrudRepository<Item,Integer> {
 
     Item findById(int id);
 
+    List<Item> findByLocation(String location);
+    List<Item> findByDeliveryType(String deliveryType);
+
+
 }
