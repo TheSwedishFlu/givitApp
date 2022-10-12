@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../images/mainPage.css">
 </head>
 <body>
+<div class="LogInAs">
+   <span> <p th:text="${'Logged in as: ' + session.siteuser.firstName}"></p>
+    <form class="logOutButton" th:action="@{/logoutuser}" method="get">
+    <input type="submit" value="Logout"/></form></span>
+</div>
+<div class="vertical-menu" >
+    <a class="top" href="/" >Home</a>
+    <a href="/profile" >Profile</a>
+    <a href="/yourAds" >Your ads</a>
+    <a href="/items" >Ads</a>
+    <a href="/addItem" id="bottom" class="active">Create new ad</a>
+
+</div>
+<div class="createAd">
+    <h3 class="createTitle">Create an ad </h3>
+</div>
+<form class="addItemForm" action="/addItem" method="POST" th:object="${item}" enctype="multipart/form-data">
+    <table><div>
+        <th class="itemInput">Name: <input type="text" th:field="*{name}"/>
+            <p class="error" th:if="${#fields.hasErrors('name')}">Incorrect first name</p></th>
+        <tr></tr>
+        <th class="itemInput"> Description: <input type="text" th:field="*{description}"/>
+            <p class="error" th:if="${#fields.hasErrors('name')}">Incorrect first name</p></th>
+        <tr></tr>
+        <th class="itemInput">Price: <input type="text" th:field="*{price}"/>
+            <p class="error" th:if="${#fields.hasErrors('name')}">Incorrect first name</p></th>
+        <tr></tr>
+        <td><img th:src="${item.img}" width="100"></td>
+        <tr></tr>
+        <th><input type="file" name="image"/></th>
+        <!--! th:field="*{img} -->
+
+        <tr></tr>
+        <th class="itemInput"> <input type="submit"/></th>
+    </div>
+    </table>
+</form>
+
+<div th:if="${item.name != null}">
+    <a th:href="'/items/' + ${item.id}"> <h2 id="ytitle2">Your add is created! </h2></a>
+    <!--<a th:href="'/items/' + ${item.id}">-->
+    <div class ="created">
+        <table style="padding-left: 10px;">
+            <th><p th:text="'Name: ' + ${item.name}"></p></th>
+            <tr></tr>
+            <th><p th:text="'Description: ' + ${item.description}"></p></th>
+            <tr></tr>
+            <th><p th:text="'Price: ' + ${item.price}"></p></th>
+        </table>
+    </div>
+</div>
 
 </body>
 </html>
