@@ -32,7 +32,6 @@ public class ItemController {
     String itemPage(Model model){
         logger.info("itemPage is running");
         List<Item> items=itemRepository.findAll();
-        System.out.println(items.size());
         model.addAttribute("items", items);
         /*Item item=new Item("Stolar","Nya stolar som vi vill ge bort pga omplanering av kontor.", "Möbel", "Stockholm",50,"Pick-up","givit.png");
         model.addAttribute("item", item);*/

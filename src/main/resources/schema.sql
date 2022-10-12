@@ -18,7 +18,7 @@ create table Item(
   category varchar(50) not null,
   location nchar(50) not null,
   qty bigint not null,
-  deliveryType varchar(50) not null,
+  delivery_type varchar(50) not null,
   image nchar(100)not null
 
 );

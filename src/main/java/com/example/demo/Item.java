@@ -17,7 +17,7 @@ import javax.persistence.Id;
         private String category;
         private String location;
         private int qty;
-        private String deliveryType;
+        private String deliveryType; //jpa översätter det stora T:et till "_" då camelcase inte används i sql. Det går öven att lösa med @Column annoteringen i Item klassen.
         private String image;
 
         public Item() {
