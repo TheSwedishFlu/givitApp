@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.sql.DataSource;
+import java.util.List;
+
 
 @Controller
 public class ItemController {
@@ -28,16 +31,19 @@ public class ItemController {
     @GetMapping("/items")
     String itemPage(Model model){
         logger.info("itemPage is running");
-        Item item=new Item(1,"Stolar","Nya stolar som vi vill ge bort pga omplanering av kontor.", "Möbel", "Stockholm",50,"Pick-up");
-        model.addAttribute("item", item);
+        List<Item> items=itemRepository.findAll();
+        System.out.println(items.size());
+        model.addAttribute("items", items);
+        /*Item item=new Item("Stolar","Nya stolar som vi vill ge bort pga omplanering av kontor.", "Möbel", "Stockholm",50,"Pick-up","givit.png");
+        model.addAttribute("item", item);*/
         return "itemPage";
     }
 
-    @PostMapping("/items")
-    String itemsPage(@ModelAttribute Item item, Model model){
-        model.addAttribute("item", item);
+   /* @PostMapping("/items")
+    String itemsPage(@ModelAttribute List<Item> items, Model model){
+
         return "itemPage";
-    }
+    }*/
 
     @GetMapping("/createItem")
     String itemCreate(){

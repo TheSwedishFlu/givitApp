@@ -18,6 +18,7 @@ import javax.persistence.Id;
         private String location;
         private int qty;
         private String deliveryType;
+        private String image;
 
         public Item() {
         }
@@ -79,13 +80,21 @@ import javax.persistence.Id;
             this.deliveryType = deliveryType;
         }
 
-        public Item(int id, String name, String description, String category, String location, int qty, String deliveryType) {
-            this.id = id;
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+        public Item(String name, String description, String category, String location, int qty, String deliveryType, String image) {
             this.name = name;
             this.description = description;
             this.category = category;
             this.location = location;
             this.qty = qty;
             this.deliveryType = deliveryType;
+            this.image = image;
         }
     }
