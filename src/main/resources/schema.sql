@@ -11,11 +11,14 @@ CREATE TABLE account (
 
 DROP TABLE IF EXISTS items;
 
-CREATE TABLE items (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   name VARCHAR(25) NULL,
-   category VARCHAR(25) NULL,
-   location VARCHAR(25) NULL,
-   qty INT NOT NULL,
-   delivery_type VARCHAR(25) NULL
+create table Item(
+  ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+  name nchar(50) not null,
+  description nchar(600) not null,
+  category varchar(50) not null,
+  location nchar(50) not null,
+  qty bigint not null,
+  deliveryType varchar(50) not null,
+  image nchar(100)not null
+
 );
