@@ -24,6 +24,13 @@ import javax.sql.DataSource;
         String myAccount(){
             logger.info("myAccount is running");
             return "myAccount";
-
         }
+
+        @GetMapping("/admin")
+        String admin(){
+            logger.info("admin is running");
+            return "admin";
+        }
+
+
     }
