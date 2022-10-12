@@ -2,11 +2,11 @@ DROP TABLE IF EXISTS account;
 
 CREATE TABLE account (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   name VARCHAR(25) NULL ,
+   name VARCHAR(25) NOT NULL ,
    orgnr INT NOT NULL,
-   city VARCHAR(25) NULL,
-   email VARCHAR(25) NULL,
-   password VARCHAR(25) NULL
+   city VARCHAR(25) NOT NULL,
+   email VARCHAR(25) NOT NULL,
+   password VARCHAR(25) NOT NULL
 );
 
 DROP TABLE IF EXISTS items;

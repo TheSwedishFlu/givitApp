@@ -47,11 +47,6 @@ public class ItemController {
         return "itemPage";
     }*/
 
-    @GetMapping("/createItem")
-    String itemCreate(){
-        logger.info("itemCreate is running");
-        return "createItem";
-    }
     @GetMapping("/itemDetails/{Id}")
     String itemDetails(@PathVariable int Id, Model model){
         Item item = itemRepository.findById(Id);
@@ -91,7 +86,17 @@ public class ItemController {
         return "redirect:/";
     }
 
-
+    @GetMapping("/createItem")
+    String createItem(Model model){
+        model.addAttribute("newItem",new Item());
+        return "createItem";
+    }
+    @PostMapping("/saveItem")
+    public String saveItem(@ModelAttribute Item item) {
+        System.out.println("save is running");
+        itemRepository.save(item);
+        return "redirect:/";
+    }
 
 
 }
