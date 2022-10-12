@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 
@@ -49,8 +49,10 @@ public class ItemController {
         logger.info("itemCreate is running");
         return "createItem";
     }
-    @GetMapping("/itemDetails")
-    String itemDetails(){
+    @GetMapping("/itemDetails/{Id}")
+    String itemDetails(@PathVariable int Id, Model model){
+        Item item = itemRepository.findById(Id);
+        model.addAttribute("item", item);
         logger.info("itemDetails is running");
         return "itemDetails";
     }
@@ -58,6 +60,7 @@ public class ItemController {
     @GetMapping("/givitTeam")
     String givitTeam(){
         logger.info("givitTeam is running");
+
         return "givitTeam";
     }
 
