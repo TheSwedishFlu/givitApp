@@ -42,23 +42,30 @@ public class ItemController {
     }
 
     @PostMapping("/items")
-    String itemsPage(@RequestParam String city,@RequestParam(required =false) String delivery , Model model){
+    String itemsPage(@RequestParam(required =false) String city,@RequestParam(required =false) String delivery , Model model){
 
         System.out.println(city);
         System.out.println(delivery);
 
-        if(city != null && delivery != null){
+        if(!city.equals("City") && delivery != null){
             List<Item> items=itemRepository.findByDeliveryTypeAndLocation(delivery,city);
+            System.out.println("Both values "+items.size());
             model.addAttribute("items", items);
 
         } else if( delivery != null || city.equals("City")){
                 List<Item> items=itemRepository.findByDeliveryType(delivery);
-                model.addAttribute("items", items);
+            System.out.println("deliver value "+items.size());
+            model.addAttribute("items", items);
         } else if(city != null ){
             List<Item> items= itemRepository.findByLocation(city);
+            System.out.println("city value "+items.size());
             model.addAttribute("items", items);
-
         }
+
+
+
+
+
 
         return "itemPage";
     }

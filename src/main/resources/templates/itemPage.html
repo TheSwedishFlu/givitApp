@@ -48,19 +48,18 @@ Filter: <select class="form-select city btn" name="city" >
     <option class="city-option btn"  value="Övriga">Övriga</option>
 </select>
 
-    <div class="input-group mb-3" action="/items" method="post">
+    <div class="input-group mb-3" >
         <div class="input-group-prepend">
             <div class="input-group-text">
-                Delivery type: <input type="checkbox" aria-label="Checkbox for following text input" value="Pick-up"
-                                      name="delivery"> Pick-Up
-                <input type="checkbox" aria-label="Checkbox for following text input" value="delivery" name="delivery">
-                Delivery
+                Delivery type: <input type="checkbox" aria-label="Checkbox" value="Collect" name="delivery">Collect
+                <input type="checkbox" aria-label="Checkbox" value="Delivery" name="delivery">Delivery
             </div>
         </div>
     </div>
 
-    <input type="submit" value="Submit">
+    <input type="submit" value="Apply Filter">
 </form>
+<input type="button" value="Clear filters" onClick="window.location.href=window.location.href">
 
 
 
