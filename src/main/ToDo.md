@@ -30,7 +30,7 @@ Haidar:
 Ulf:
 
 **Who´s doing what today? 12/10**
-Derya: Filtrering Stad etc
+Derya: Filtrering Stad etc, Cart
 Tobias: Bilduppladdning
 Mohamed: Mappning sidor
 Haidar: Session / logout etc
