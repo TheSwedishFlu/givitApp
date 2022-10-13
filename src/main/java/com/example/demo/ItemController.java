@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -132,17 +137,38 @@ public class ItemController {
 
 
 
-        @GetMapping("/createItem")
+    @GetMapping("/create")
     String createItem(Model model){
-        model.addAttribute("newItem",new Item());
+        model.addAttribute("Item",new Item());
         return "createItem";
     }
-    @PostMapping("/saveItem")
+    @PostMapping("/si")
     public String saveItem(@ModelAttribute Item item) {
         System.out.println("save is running");
         itemRepository.save(item);
         return "redirect:/";
     }
 
+
+//tobbe start
+public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/src/main/resources/static";
+
+    @GetMapping("/createItem")
+    public String displayUploadForm(Model model) {
+        model.addAttribute("Item",new Item());
+        return "createItem";
+    }
+
+    @PostMapping("/saveItem")
+    public String uploadImage(Model model,@ModelAttribute Item item, @RequestParam("fileimage") MultipartFile file) throws IOException {
+        StringBuilder fileNames = new StringBuilder();
+        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
+        fileNames.append(file.getOriginalFilename());
+        Files.write(fileNameAndPath, file.getBytes());
+        //model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
+        System.out.println(fileNames);
+        itemRepository.save(item);
+        return "redirect:/";
+    }
 
 }
