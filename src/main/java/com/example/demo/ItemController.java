@@ -84,7 +84,7 @@ public class ItemController {
     public String Login(HttpSession session, @RequestParam String Username, @RequestParam String Password){
         if (Username.equals("Mohamed") && Password.equals("123")) {
             session.setAttribute("Username", Username);
-            return "itemsPage";
+            return "itemPage";
         }
 
         return "redirect:/";
