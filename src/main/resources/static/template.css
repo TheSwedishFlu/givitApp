@@ -44,7 +44,9 @@ h2{
     margin-right: 50%;
 }
 
-button.btn.dropdown-toggle:hover{
+select.form-select.city.btn:hover{
     background-color: #fba115;
 }
+
+
 

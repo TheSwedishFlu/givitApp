@@ -42,11 +42,23 @@ public class ItemController {
     }
 
     @PostMapping("/items")
-    String itemsPage(@ModelAttribute List<Item> items, Model model){
-        String location = (String) model.getAttribute("city");
-        String deliveryType= (String) model.getAttribute("delivery");
+    String itemsPage(@RequestParam String city,@RequestParam(required =false) String delivery , Model model){
 
-        List<Item> selection= itemRepository.findByLocation(location);
+        System.out.println(city);
+        System.out.println(delivery);
+
+        if(city != null && delivery != null){
+            List<Item> items=itemRepository.findByDeliveryTypeAndLocation(delivery,city);
+            model.addAttribute("items", items);
+
+        } else if( delivery != null || city.equals("City")){
+                List<Item> items=itemRepository.findByDeliveryType(delivery);
+                model.addAttribute("items", items);
+        } else if(city != null ){
+            List<Item> items= itemRepository.findByLocation(city);
+            model.addAttribute("items", items);
+
+        }
 
         return "itemPage";
     }
