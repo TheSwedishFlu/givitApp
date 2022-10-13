@@ -46,6 +46,8 @@ public class ItemController {
         String location = (String) model.getAttribute("city");
         String deliveryType= (String) model.getAttribute("delivery");
 
+        List<Item> selection= itemRepository.findByLocation(location);
+
         return "itemPage";
     }
 
