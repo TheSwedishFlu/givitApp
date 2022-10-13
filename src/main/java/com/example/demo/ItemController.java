@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 
@@ -20,6 +24,9 @@ import java.util.List;
 public class ItemController {
 
     Logger logger = LoggerFactory.getLogger(AccountController.class);
+
+    @Autowired
+    private DataSource dataSource;
 
     @Autowired
     ItemRepository itemRepository;
@@ -99,17 +106,33 @@ public class ItemController {
         return "redirect:/";
     }
 
+
+
     @PostMapping("/login")
     public String Login(HttpSession session, @RequestParam String Username, @RequestParam String Password){
-        if (Username.equals("Mohamed") && Password.equals("123")) {
+
+        Account account = accountRepository.findByEmail(Username);
+
+        if (account!= null && account.getPassword().equals(Password)) {
             session.setAttribute("Username", Username);
+
             return "itemPage";
         }
 
         return "redirect:/";
+
+
+
     }
 
-    @GetMapping("/createItem")
+
+
+
+
+
+
+
+        @GetMapping("/createItem")
     String createItem(Model model){
         model.addAttribute("newItem",new Item());
         return "createItem";

@@ -10,4 +10,6 @@ import java.util.List;
 @Service
 public interface AccountRepository extends CrudRepository<Account,Integer> {
     List<Account> findAll();
+
+    Account findByEmail(String email);
 }
