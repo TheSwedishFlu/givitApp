@@ -9,6 +9,9 @@
 </head>
 <body>
 
+
+
+
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="/givitTeam">Givit</a>
@@ -30,12 +33,8 @@
             </ul>
 
             <div class="container-fluid">
-                <form  action="/login"  method="post"  class="d-flex" role="search">
-
-                    <input class="form-control me-2" type="search" name="Username" placeholder="Username" aria-label="Search">
-
-                    <input type="password" class="form-control me-2" id="exampleInputPassword1"  name="Password" placeholder="Password" />
-                    <button class="btn btn-outline-success" type="submit">Login</button>
+                <form  th:action="@{/logoutuser}"  method="get"  class="d-flex" role="search">
+                    <button class="btn btn-outline-success" type="submit">Logout</button>
                 </form>
             </div>
 
