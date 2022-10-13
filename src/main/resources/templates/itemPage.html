@@ -31,18 +31,12 @@
 
             </ul>
 
-            <div class="container-fluid">
-                <form  th:action="@{/logoutuser}"  method="get"  class="d-flex" role="search">
-                    <button class="btn btn-outline-success" type="submit">Logout</button>
-                </form>
-            </div>
-
         </div>
 
     </div>
     </div>
 </nav>
-
+<p th:text="${'Logged in as: ' + session.Username}"></p>
 
 
 <form action="/items" method="post" >
