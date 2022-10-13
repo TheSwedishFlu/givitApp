@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 import java.util.List;
 
 
@@ -46,11 +49,6 @@ public class ItemController {
         return "itemPage";
     }
 
-    @GetMapping("/createItem")
-    String itemCreate(){
-        logger.info("itemCreate is running");
-        return "createItem";
-    }
     @GetMapping("/itemDetails/{Id}")
     String itemDetails(@PathVariable int Id, Model model){
         Item item = itemRepository.findById(Id);
@@ -79,5 +77,28 @@ public class ItemController {
         System.out.println("saved it");
         return "redirect:/";
     }
+
+    @PostMapping("/login")
+    public String Login(HttpSession session, @RequestParam String Username, @RequestParam String Password){
+        if (Username.equals("Mohamed") && Password.equals("123")) {
+            session.setAttribute("Username", Username);
+            return "itemsPage";
+        }
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/createItem")
+    String createItem(Model model){
+        model.addAttribute("newItem",new Item());
+        return "createItem";
+    }
+    @PostMapping("/saveItem")
+    public String saveItem(@ModelAttribute Item item) {
+        System.out.println("save is running");
+        itemRepository.save(item);
+        return "redirect:/";
+    }
+
 
 }

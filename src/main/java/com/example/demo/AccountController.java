@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.sql.DataSource;
 
-public class AccountController {
 
 
     @Controller
-    public class ItemController {
+    public class AccountController {
 
         Logger logger = LoggerFactory.getLogger(AccountController.class);
 
@@ -25,8 +24,13 @@ public class AccountController {
         String myAccount(){
             logger.info("myAccount is running");
             return "myAccount";
-
         }
 
+        @GetMapping("/admin")
+        String admin(){
+            logger.info("admin is running");
+            return "admin";
+        }
+
+
     }
-}
