@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -61,21 +62,31 @@ public class ItemController {
             System.out.println("city value "+items.size());
             model.addAttribute("items", items);
         }
-
-
-
-
-
-
         return "itemPage";
     }
 
     @GetMapping("/itemDetails/{Id}")
     String itemDetails(@PathVariable int Id, Model model){
         Item item = itemRepository.findById(Id);
+
         model.addAttribute("item", item);
         logger.info("itemDetails is running");
         return "itemDetails";
+    }
+
+    @PostMapping("/itemDetails/{id}")
+    String processBuy(@PathVariable int id, @RequestParam String addItem, HttpSession session ){
+        Item buyItem=itemRepository.findById(id);
+        System.out.println("Buy item with id: " + id);
+        session.setAttribute("Buy",buyItem);
+
+        return "redirect:/cart";
+    }
+
+    @GetMapping("/cart")
+    String cart(){
+        logger.info("Cart is running");
+        return "cart";
     }
 
     @GetMapping("/givitTeam")
@@ -120,6 +131,7 @@ public class ItemController {
         itemRepository.save(item);
         return "redirect:/";
     }
+
 
 
 }
