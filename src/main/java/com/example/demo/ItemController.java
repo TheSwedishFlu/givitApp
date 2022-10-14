@@ -10,17 +10,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 @Controller
 public class ItemController {
 
     Logger logger = LoggerFactory.getLogger(AccountController.class);
+
+    @Autowired
+    private DataSource dataSource;
 
     @Autowired
     ItemRepository itemRepository;
@@ -68,7 +76,6 @@ public class ItemController {
     @GetMapping("/itemDetails/{Id}")
     String itemDetails(@PathVariable int Id, Model model){
         Item item = itemRepository.findById(Id);
-
         model.addAttribute("item", item);
         logger.info("itemDetails is running");
         return "itemDetails";
@@ -112,7 +119,10 @@ public class ItemController {
 
     @PostMapping("/login")
     public String Login(HttpSession session, @RequestParam String Username, @RequestParam String Password){
-        if (Username.equals("Mohamed") && Password.equals("123")) {
+
+        Account account = accountRepository.findByEmail(Username);
+
+        if (account!= null && account.getPassword().equals(Password)) {
             session.setAttribute("Username", Username);
             return "itemPage";
         }
@@ -120,12 +130,19 @@ public class ItemController {
         return "redirect:/";
     }
 
-    @GetMapping("/createItem")
+
+
+
+
+
+
+
+    @GetMapping("/create")
     String createItem(Model model){
-        model.addAttribute("newItem",new Item());
+        model.addAttribute("Item",new Item());
         return "createItem";
     }
-    @PostMapping("/saveItem")
+    @PostMapping("/si")
     public String saveItem(@ModelAttribute Item item) {
         System.out.println("save is running");
         itemRepository.save(item);
@@ -133,5 +150,25 @@ public class ItemController {
     }
 
 
+//tobbe start
+public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/src/main/resources/static";
+
+    @GetMapping("/createItem")
+    public String displayUploadForm(Model model) {
+        model.addAttribute("Item",new Item());
+        return "createItem";
+    }
+
+    @PostMapping("/saveItem")
+    public String uploadImage(Model model,@ModelAttribute Item item, @RequestParam("fileimage") MultipartFile file) throws IOException {
+        StringBuilder fileNames = new StringBuilder();
+        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
+        fileNames.append(file.getOriginalFilename());
+        Files.write(fileNameAndPath, file.getBytes());
+        //model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
+        System.out.println(fileNames);
+        itemRepository.save(item);
+        return "redirect:/";
+    }
 
 }

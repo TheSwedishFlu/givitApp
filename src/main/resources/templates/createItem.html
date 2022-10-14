@@ -11,7 +11,7 @@
 <h2>Create a new item</h2>
 <br>
 
-<form th:object="${newItem}" action="/saveItem" method="POST">
+<form th:object="${Item}" action="/saveItem" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label class="form-label">name</label>
         <input type="text" required="text" class="form-control" id="1" th:field="*{name}"/>
@@ -40,9 +40,15 @@
         <label class="form-label">image</label>
         <input type="text" required="text" class="form-control" id="7" th:field="*{image}"/>
     </div>
-
     <div class="mb-3">
-        <input type="hidden" th:if="${newItem.id != null}" th:field="*{id}"/>
+        <input type="hidden" th:if="${Item.id != null}" th:field="*{id}"/>
+    </div>
+start
+    <div class="mb-3">
+        <input type="file" name="fileimage" accept="image/*" >
+    </div>
+stop
+    <div class="mb-3">
         <button type="submit" value="Save item" class="btn btn-primary">Submit</button>
     </div>
 
