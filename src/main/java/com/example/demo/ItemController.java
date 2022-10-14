@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.io.IOException;
@@ -82,21 +84,54 @@ public class ItemController {
     }
 
     @PostMapping("/itemDetails/{id}")
-    String processBuy(@PathVariable int id, @RequestParam String addItem, HttpSession session ){
+    String processBuy(@PathVariable int id, @RequestParam String addItem, Model model, HttpSession session, HttpServletRequest currentSession){
         Item buyItem=itemRepository.findById(id);
         System.out.println("Buy item with id: " + id);
-        session.setAttribute("Buy",buyItem);
+        List<Item> addedItems=new ArrayList<>();
+        addedItems.add(buyItem);
+        session.setAttribute("shoppingList",addedItems);
+        model.addAttribute("session",session);
 
         return "redirect:/cart";
     }
 
     @GetMapping("/cart")
-    String cart(){
+    String cart(Model model, HttpSession session, HttpServletRequest currentSession){
         logger.info("Cart is running");
+        currentSession.getSession();
+        List<Item> addedItems= (List<Item>) session.getAttribute("shoppingList");
+        for (Item i : addedItems){
+            Item removeFromItems=itemRepository.findById(i.getId());
+            itemRepository.delete(removeFromItems);
+            System.out.println("Item removed from repository:"+ removeFromItems.getName());
+        }
+        session.setAttribute("shoppingList",addedItems);
+        model.addAttribute("session",session);
         return "cart";
     }
 
-    @GetMapping("/givitTeam")
+    @PostMapping("/cart")
+    String cartEdits(@RequestParam int remove, Model model, HttpSession session, HttpServletRequest currentSession){
+        currentSession.getSession();
+        List<Item> addedItems= (List<Item>) session.getAttribute("shoppingList");
+            Item removedFromShoppingList=itemRepository.findById(remove);
+            itemRepository.save(removedFromShoppingList);
+        System.out.println("Item added to repository:");
+        for (Item i:addedItems) {
+            if (i.getId()==removedFromShoppingList.getId()){
+                addedItems.remove(i);
+                System.out.println("removed from cart:" +addedItems.remove(i));
+
+            }
+        }
+        session.setAttribute("shoppingList",addedItems);
+        model.addAttribute("session",session);
+
+        return "cart";
+    }
+
+
+        @GetMapping("/givitTeam")
     String givitTeam(){
         logger.info("givitTeam is running");
 
@@ -129,13 +164,6 @@ public class ItemController {
 
         return "redirect:/";
     }
-
-
-
-
-
-
-
 
     @GetMapping("/create")
     String createItem(Model model){
