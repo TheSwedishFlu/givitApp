@@ -1,12 +1,10 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
     @Entity
+    @Table (name="Item")
     public class Item {
 
         @Id
@@ -20,6 +18,9 @@ import javax.persistence.Id;
         private String deliveryType; //jpa översätter det stora T:et till "_" då camelcase inte används i sql. Det går öven att lösa med @Column annoteringen i Item klassen.
         private String image;
 
+        @ManyToOne(fetch = FetchType.LAZY, optional = false)
+        @JoinColumn(name = "account_orgnr", nullable = false)
+        private Account account;
         public Item() {
         }
 

@@ -11,15 +11,13 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 
-
-    @Controller
+@Controller
     public class AccountController {
 
         Logger logger = LoggerFactory.getLogger(AccountController.class);
 
         @Autowired
         private DataSource dataSource;
-
 
 
         @GetMapping("/myAccount")
@@ -37,7 +35,7 @@ import javax.sql.DataSource;
         @GetMapping("/logoutuser")
         public String logout(HttpSession session, HttpServletResponse res)
         {
-            session.removeAttribute("siteuser");
+            session.removeAttribute("Username");
             return "redirect:/";
         }
 
