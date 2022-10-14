@@ -124,7 +124,7 @@ public class ItemController {
 
         if (account!= null && account.getPassword().equals(Password)) {
             session.setAttribute("Username", Username);
-            return "itemPage";
+            return "redirect:/items";
         }
 
         return "redirect:/";
