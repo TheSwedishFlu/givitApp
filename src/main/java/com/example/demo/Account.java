@@ -1,21 +1,25 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
+@Table (name="account")
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @Column(unique = true)
     private int orgnr;
     private String city;
     private String email;
     private String password;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<Item> items;
 
     public Account() {
     }
