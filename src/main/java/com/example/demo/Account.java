@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table (name="account")
+//@Table (name="account")
 public class Account {
 
     @Id
@@ -17,9 +17,9 @@ public class Account {
     private String email;
     private String password;
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY,
+   /* @OneToMany(mappedBy = "account", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    private Set<Item> items;
+    private Set<Item> items;*/
 
     public Account() {
     }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
     @Entity
-    @Table (name="Item")
+    //@Table (name="Item")
     public class Item {
 
         @Id
@@ -17,10 +17,13 @@ import javax.persistence.*;
         private int qty;
         private String deliveryType; //jpa översätter det stora T:et till "_" då camelcase inte används i sql. Det går öven att lösa med @Column annoteringen i Item klassen.
         private String image;
+       /* private int accountOrgnr;
+
+
 
         @ManyToOne(fetch = FetchType.LAZY, optional = false)
         @JoinColumn(name = "account_orgnr", nullable = false)
-        private Account account;
+        private Account account;*/
         public Item() {
         }
 

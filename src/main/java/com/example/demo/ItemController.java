@@ -105,8 +105,8 @@ public class ItemController {
             itemRepository.delete(removeFromItems);
             System.out.println("Item removed from repository:"+ removeFromItems.getName());
         }
-        session.setAttribute("shoppingList",addedItems);
-        model.addAttribute("session",session);
+        //session.setAttribute("shoppingList",addedItems);
+        //model.addAttribute("session",session);
         return "cart";
     }
 
