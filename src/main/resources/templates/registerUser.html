@@ -8,12 +8,12 @@
 </head>
 <body>
 
-<h2>Create a new user</h2>
+<h2>Skapa ny användare</h2>
 <br>
 
 <form th:object="${newAccount}" action="/save" method="POST">
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Company</label>
+        <label for="exampleInputPassword1" class="form-label">Företag</label>
         <input type="text" required="text" class="form-control" id="2" th:field="*{name}"/>
     </div>
     <div class="mb-3">
@@ -21,27 +21,27 @@
         <input type="text" required="text" class="form-control" id="3" th:field="*{city}"/>
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Org No</label>
+        <label for="exampleInputPassword1" class="form-label">Organisationsnummer</label>
         <input type="text" required="text" class="form-control" id="4" th:field="*{orgnr}"/>
     </div>
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <label for="exampleInputEmail1" class="form-label">Mailadress</label>
         <input type="email" required="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{email}"/>
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <div id="emailHelp" class="form-text">Vi lämnar aldrig ut din e-mail till någon.</div>
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <label for="exampleInputPassword1" class="form-label">Lösenord</label>
         <input type="password" required="text" class="form-control" id="exampleInputPassword1" th:field="*{password}"/>
         <br>
         <input type="hidden" th:if="${newAccount.id != null}" th:field="*{id}"/>
-        <button type="submit" value="Save account" class="btn btn-primary">Submit</button>
+        <button type="submit" value="Save account" class="btn btn-primary">Skicka</button>
     </div>
 
 
 </form>
 
 <div class="backButton">
-    <button type="button" onclick="location.href='/'; "class="btn btn-outline-secondary">Back</button>
+    <button type="button" onclick="location.href='/'; "class="btn btn-outline-secondary">Tillbaka</button>
 </div>
 
 
