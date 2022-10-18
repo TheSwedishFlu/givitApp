@@ -10,4 +10,16 @@ class GivitApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void itemsPage() {
+	}
+
+	@Test
+	void uploadImage() {
+	}
+
+	@Test
+	void saveItem() {
+	}
+
 }
