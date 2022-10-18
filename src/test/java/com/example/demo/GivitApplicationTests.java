@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -7,22 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 class GivitApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void testDescription() {
+		Company givit = new Company("Givit", 5);
+		Assertions.assertEquals("Givit is a company with 5 members.", givit.description());
 	}
 
-	@Test
-	void itemsPage() {
-	}
-
-	@Test
-	void uploadImage() {
-	}
-
-	@Test
-	void saveItem() {
-		Item item = new Item("test","descritp","Kontor","Stockholm",33,"Delivery","/img/matbord.jpg");
-		ItemRepository
-		assertEquals(4, calculator.multiply(2, 2),"optional failure message");
-	}
 
 }
