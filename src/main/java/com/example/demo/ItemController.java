@@ -145,6 +145,8 @@ public class ItemController {
         return "givitTeam";
     }
 
+
+
     @GetMapping("/registerUser")
     String registerUser(Model model){
         model.addAttribute("newAccount",new Account());
@@ -167,7 +169,7 @@ public class ItemController {
 
         if (account!= null && account.getPassword().equals(Password)) {
             session.setAttribute("Username", Username);
-            return "redirect:/items";
+            return "itemsPage";
         }
         return "redirect:/";
     }
