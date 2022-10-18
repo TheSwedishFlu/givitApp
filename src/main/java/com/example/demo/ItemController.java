@@ -53,23 +53,40 @@ public class ItemController {
     }
 
     @PostMapping("/items")
-    String itemsPage(@RequestParam(required =false) String city,@RequestParam(required =false) String delivery , Model model){
+    String itemsPage(@RequestParam(required =false) String city,@RequestParam(required =false) String delivery ,@RequestParam(required =false) String clear, Model model, HttpSession session){
 
         System.out.println(city);
         System.out.println(delivery);
-
+        if (clear!=null){
+            delivery=null;
+            city="City";
+            session.setAttribute("delivery",delivery);
+            session.setAttribute("city",city);
+            List<Item> items= itemRepository.findAll();
+            model.addAttribute("items", items);
+            return "itemPage";
+        }
+        if(!city.equals("City")){
+            session.setAttribute("city",city);
+        }
         if(!city.equals("City") && delivery != null){
             List<Item> items=itemRepository.findByDeliveryTypeAndLocation(delivery,city);
             System.out.println("Both values "+items.size());
+            session.setAttribute("delivery",delivery);
+            session.setAttribute("city",city);
             model.addAttribute("items", items);
 
         } else if( delivery != null || city.equals("City")){
-                List<Item> items=itemRepository.findByDeliveryType(delivery);
+            List<Item> items=itemRepository.findByDeliveryType(delivery);
             System.out.println("deliver value "+items.size());
+            session.setAttribute("delivery",delivery);
+            session.setAttribute("city",city);
             model.addAttribute("items", items);
         } else if(city != null ){
             List<Item> items= itemRepository.findByLocation(city);
             System.out.println("city value "+items.size());
+            session.setAttribute("delivery",delivery);
+            session.setAttribute("city",city);
             model.addAttribute("items", items);
         }
         return "itemPage";

@@ -43,3 +43,10 @@ Mohamed: /items sidan "feature" link to /createItem,
 Tabort "feature" login sidan.
 Haidar: fixar myaccount link lista för orgnr items
 Ulf: admin-sidan
+
+Feedback från presentation : 
+fixa filtreringen 
+Carten behöver skilja sig från items till utseenede för att man ska förstå att man är på en ny sida
+ha med mer teknisk överblick med mappning och kod (hur saker hänger ihop)
+Mer introduktion av Givit som app (första slide ?)- djupare intrduktion
+Fixa css så det är tydligt vilken sida du kommer till

@@ -44,26 +44,37 @@
 
 
 <form action="/items" method="post" >
-Filter: <select class="form-select city btn" name="city" >
-    <option selected class="cityOption btn" >City</option>
+Filter: <select th:if="${session.city}=='City'" class="form-select city btn" name="city" >
+    <option selected class="cityOption btn" value="City">City</option>
     <option class="city-option btn"  value="Göteborg">Göteborg</option>
     <option class="city-option btn"  value="Malmö">Malmö</option>
     <option class="city-option btn"  value="Stockholm">Stockholm</option>
-    <option class="city-option btn"  value="Övriga">Övriga</option>
+    <!--<option class="city-option btn"  value="Övriga">Övriga</option>-->
 </select>
+    <select th:if="${session.city}!='City'" class="form-select city btn" name="city" >
+        <option class="cityOption btn" value="City">City</option>
+        <option th:selected="(${session.city}=='Göteborg')" class="city-option btn"  value="Göteborg">Göteborg</option>
+        <option th:selected="(${session.city}=='Malmö')" class="city-option btn"  value="Malmö">Malmö</option>
+        <option th:selected="(${session.city}=='Stockholm')" class="city-option btn"  value="Stockholm">Stockholm</option>
+        <!--<option class="city-option btn"  value="Övriga">Övriga</option>-->
+
+    </select>
 
     <div class="input-group mb-3" >
         <div class="input-group-prepend">
             <div class="input-group-text">
-                Delivery type: <input type="checkbox" aria-label="Checkbox" value="Collect" name="delivery">Collect
-                <input type="checkbox" aria-label="Checkbox" value="Delivery" name="delivery">Delivery
+                Delivery type: <input th:if="${session.delivery}!='Collect'"  type="checkbox" aria-label="Checkbox" value="Collect" name="delivery" >
+                <input th:if="${session.delivery}=='Collect'" checked type="checkbox" aria-label="Checkbox" value="Collect" name="delivery"  >Collect
+                <input th:if="${session.delivery}!='Delivery'" type="checkbox" aria-label="Checkbox" value="Delivery" name="delivery" >
+                <input th:if="${session.delivery}=='Delivery'" checked type="checkbox" aria-label="Checkbox" value="Delivery" name="delivery" >Delivery
             </div>
         </div>
     </div>
 
     <input type="submit" value="Apply Filter">
+    <input type="submit" value="Clear filters" name="clear">
+
 </form>
-<input type="button" value="Clear filters" onClick="window.location.href=window.location.href">
 
 
 
