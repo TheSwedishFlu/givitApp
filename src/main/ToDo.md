@@ -35,3 +35,11 @@ Tobias: Bilduppladdning
 Mohamed: Mappning sidor
 Haidar: Session / logout etc
 Ulf: Bilduppladdning
+
+**Who´s doing what today? 14/10**
+Derya: Cart
+Tobias: Bilduppladdning
+Mohamed: /items sidan "feature" link to /createItem,
+Tabort "feature" login sidan.
+Haidar: fixar myaccount link lista för orgnr items
+Ulf: admin-sidan

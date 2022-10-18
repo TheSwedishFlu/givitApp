@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -141,7 +142,6 @@ public class ItemController {
         @GetMapping("/givitTeam")
     String givitTeam(){
         logger.info("givitTeam is running");
-
         return "givitTeam";
     }
 
@@ -151,6 +151,7 @@ public class ItemController {
         logger.info("registerUser is running");
         return "registerUser";
     }
+
     @PostMapping("/save")
     public String set(@ModelAttribute Account account) {
         System.out.println("save is running");
@@ -168,7 +169,6 @@ public class ItemController {
             session.setAttribute("Username", Username);
             return "redirect:/items";
         }
-
         return "redirect:/";
     }
 
@@ -184,9 +184,7 @@ public class ItemController {
         return "redirect:/";
     }
 
-
-//tobbe start
-public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/src/main/resources/static";
+public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\img\\";
 
     @GetMapping("/createItem")
     public String displayUploadForm(Model model) {
@@ -196,14 +194,28 @@ public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/src/m
 
     @PostMapping("/saveItem")
     public String uploadImage(Model model,@ModelAttribute Item item, @RequestParam("fileimage") MultipartFile file) throws IOException {
-        StringBuilder fileNames = new StringBuilder();
-        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
-        fileNames.append(file.getOriginalFilename());
-        Files.write(fileNameAndPath, file.getBytes());
-        //model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
-        System.out.println(fileNames);
+
+        try {
+            StringBuilder fileNames = new StringBuilder();
+            Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
+            fileNames.append(file.getOriginalFilename());
+            Files.write(fileNameAndPath, file.getBytes());
+            //model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
+            System.out.println(fileNames);
+
+            model.addAttribute("item",item);
+            if (!fileNames.toString().equals("img/givit.png")){
+                String name=fileNames.toString();
+                item.setImage("img/"+name);
+            }
+
+        } catch (Exception e) {
+            System.out.println("no image selected");
+        }
+
+
         itemRepository.save(item);
-        return "redirect:/";
+        return "redirect:/items";
     }
 
 }
