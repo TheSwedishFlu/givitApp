@@ -172,18 +172,6 @@ public class ItemController {
         return "redirect:/";
     }
 
-    @GetMapping("/create")
-    String createItem(Model model){
-        model.addAttribute("Item",new Item());
-        return "createItem";
-    }
-    @PostMapping("/si")
-    public String saveItem(@ModelAttribute Item item) {
-        System.out.println("save is running");
-        itemRepository.save(item);
-        return "redirect:/";
-    }
-
 public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\img\\";
 
     @GetMapping("/createItem")

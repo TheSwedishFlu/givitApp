@@ -20,6 +20,9 @@ class GivitApplicationTests {
 
 	@Test
 	void saveItem() {
+		Item item = new Item("test","descritp","Kontor","Stockholm",33,"Delivery","/img/matbord.jpg");
+		ItemRepository
+		assertEquals(4, calculator.multiply(2, 2),"optional failure message");
 	}
 
 }

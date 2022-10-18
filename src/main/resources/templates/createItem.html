@@ -13,41 +13,62 @@
 
 <form th:object="${Item}" action="/saveItem" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
-        <label class="form-label">name</label>
+        <label class="form-label">Name</label>
         <input type="text" required="text" class="form-control" id="1" th:field="*{name}"/>
     </div>
     <div class="mb-3">
-        <label class="form-label">description</label>
+        <label class="form-label">Description</label>
         <input type="text" required="text" class="form-control" id="2" th:field="*{description}"/>
     </div>
+
     <div class="mb-3">
-        <label class="form-label">category</label>
-        <input type="text" required="text" class="form-control" id="3" th:field="*{category}"/>
+        <label class="form-label">QTY</label>
+        <input type="number" required="text" class="form-control" id="5" th:field="*{qty}"/>
     </div>
+
     <div class="mb-3">
-        <label class="form-label">location</label>
-        <input type="text" required="text" class="form-control" id="4" th:field="*{location}"/>
+    <select id="category" name="category" th:field="*{category}"/>
+    <label class="form-label">Category</label>
+        <option value="Möbler">Möbler</option>
+    <option value="Decoration">Decoration</option>
+    <option value="Lager">Lager</option>
+    <option value="Material">Material</option>
+    </select>
     </div>
+
     <div class="mb-3">
-        <label class="form-label">qty</label>
-        <input type="text" required="text" class="form-control" id="5" th:field="*{qty}"/>
+    <select id="location" name="location" th:field="*{location}"/>
+    <label class="form-label">Location</label>
+        <option value="Övriga">Övriga</option>
+    <option value="Göteborg">Göteborg</option>
+    <option value="Malmö">Malmö</option>
+    <option value="Strockholm">Stockholm</option>
+
+    </select>
     </div>
+
     <div class="mb-3">
-        <label class="form-label">deliveryType</label>
-        <input type="text" required="text" class="form-control" id="6" th:field="*{deliveryType}"/>
+    <select id="deliveryType" name="deliveryType" th:field="*{deliveryType}"/>
+    <label class="form-label">Delivery</label>
+        <option value="Collect">Collect</option>
+        <option value="Delivery">Delivery</option>
+    </select>
     </div>
+
     <div class="mb-3">
-        <label class="form-label">image</label>
         <input type="hidden" required="text" class="form-control" id="7" th:field="*{image}"/>
     </div>
     <div class="mb-3">
         <input type="hidden" th:if="${Item.id != null}" th:field="*{id}"/>
     </div>
-start
+
     <div class="mb-3">
+        <div>
+        <label class="form-label">image</label>
+        </div>
         <input type="file" name="fileimage" accept="image/*" >
     </div>
-stop
+
     <div class="mb-3">
         <button type="submit" value="Save item" class="btn btn-primary">Submit</button>
     </div>
@@ -57,8 +78,6 @@ stop
 <div class="backButton">
     <button type="button" onclick="location.href='/'; "class="btn btn-outline-secondary">Back</button>
 </div>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
