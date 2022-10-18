@@ -162,6 +162,8 @@ public class ItemController {
         return "givitTeam";
     }
 
+
+
     @GetMapping("/registerUser")
     String registerUser(Model model){
         model.addAttribute("newAccount",new Account());
@@ -184,20 +186,8 @@ public class ItemController {
 
         if (account!= null && account.getPassword().equals(Password)) {
             session.setAttribute("Username", Username);
-            return "redirect:/items";
+            return "itemsPage";
         }
-        return "redirect:/";
-    }
-
-    @GetMapping("/create")
-    String createItem(Model model){
-        model.addAttribute("Item",new Item());
-        return "createItem";
-    }
-    @PostMapping("/si")
-    public String saveItem(@ModelAttribute Item item) {
-        System.out.println("save is running");
-        itemRepository.save(item);
         return "redirect:/";
     }
 
