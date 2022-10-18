@@ -17,13 +17,24 @@ import javax.persistence.*;
         private int qty =1;
         private String deliveryType; //jpa översätter det stora T:et till "_" då camelcase inte används i sql. Det går öven att lösa med @Column annoteringen i Item klassen.
         private String image ="img/givit.png";
-       /* private int accountOrgnr;
+
+        private int orgnr;
+
+        public int getOrgnr() {
+            return orgnr;
+        }
+
+        public void setOrgnr(int orgnr) {
+            this.orgnr = orgnr;
+        }
+
+        /* private int accountOrgnr;
 
 
 
-        @ManyToOne(fetch = FetchType.LAZY, optional = false)
-        @JoinColumn(name = "account_orgnr", nullable = false)
-        private Account account;*/
+                @ManyToOne(fetch = FetchType.LAZY, optional = false)
+                @JoinColumn(name = "account_orgnr", nullable = false)
+                private Account account;*/
         public Item() {
         }
 
@@ -91,7 +102,7 @@ import javax.persistence.*;
             this.image = image;
         }
 
-        public Item(String name, String description, String category, String location, int qty, String deliveryType, String image) {
+        public Item(String name, String description, String category, String location, int qty, String deliveryType, String image, int orgnr) {
             this.name = name;
             this.description = description;
             this.category = category;
@@ -99,5 +110,6 @@ import javax.persistence.*;
             this.qty = qty;
             this.deliveryType = deliveryType;
             this.image = image;
+            this.orgnr = orgnr;
         }
     }

@@ -56,8 +56,13 @@
     </div>
 
     <div class="mb-3">
+        <input type="hidden" required="text" class="form-control" id="9" th:field="*{orgnr}"/>
+    </div>
+
+    <div class="mb-3">
         <input type="hidden" required="text" class="form-control" id="7" th:field="*{image}"/>
     </div>
+
     <div class="mb-3">
         <input type="hidden" th:if="${Item.id != null}" th:field="*{id}"/>
     </div>

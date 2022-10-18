@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.util.*;
@@ -118,16 +120,21 @@ public class ItemController {
     @GetMapping("/cart")
     String cart(Model model, HttpSession session, HttpServletRequest currentSession){
         logger.info("Cart is running");
-        currentSession.getSession();
-        List<Item> addedItems= (List<Item>) session.getAttribute("shoppingList");
-        for (Item i : addedItems){
-            Item removeFromItems=itemRepository.findById(i.getId());
-            if (removeFromItems!=null){
-                itemRepository.delete(removeFromItems);
-                System.out.println("Item removed from repository:"+ removeFromItems.getName());
 
+        try {
+            currentSession.getSession();
+            List<Item> addedItems= (List<Item>) session.getAttribute("shoppingList");
+            for (Item i : addedItems){
+                Item removeFromItems=itemRepository.findById(i.getId());
+                if (removeFromItems!=null){
+                    itemRepository.delete(removeFromItems);
+                    System.out.println("Item removed from repository:"+ removeFromItems.getName());
+                }
             }
+        }catch (Exception e){
+            System.out.println("Empty cart");
         }
+
         //session.setAttribute("shoppingList",addedItems);
         //model.addAttribute("session",session);
         return "cart";
@@ -162,8 +169,6 @@ public class ItemController {
         return "givitTeam";
     }
 
-
-
     @GetMapping("/registerUser")
     String registerUser(Model model){
         model.addAttribute("newAccount",new Account());
@@ -180,7 +185,11 @@ public class ItemController {
     }
 
     @PostMapping("/login")
-    public String Login(HttpSession session, @RequestParam String Username, @RequestParam String Password){
+    public String Login(HttpServletRequest req, HttpServletResponse res , @RequestParam String Username,
+                        @RequestParam String Password)throws ServletException {
+
+        HttpSession session = req.getSession();
+        session.setAttribute("account", Username);
 
         Account account = accountRepository.findByEmail(Username);
 
@@ -200,8 +209,10 @@ public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "\\src\
     }
 
     @PostMapping("/saveItem")
-    public String uploadImage(Model model,@ModelAttribute Item item, @RequestParam("fileimage") MultipartFile file) throws IOException {
+    public String uploadImage(HttpServletRequest req, HttpServletResponse res ,Model model, @ModelAttribute Item item, @RequestParam("fileimage")
+                                  MultipartFile file) throws ServletException, IOException {
 
+        HttpSession session = req.getSession();
         try {
             StringBuilder fileNames = new StringBuilder();
             Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
@@ -219,8 +230,12 @@ public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "\\src\
         } catch (Exception e) {
             System.out.println("no image selected");
         }
+        String acc =(String) session.getAttribute("account");
+        System.out.println((String) session.getAttribute("account"));
+        Account account = accountRepository.findByEmail(acc);
 
-
+        item.setOrgnr(account.getOrgnr());
+        System.out.println("this is it: "+account.getOrgnr());
         itemRepository.save(item);
         return "redirect:/items";
     }
