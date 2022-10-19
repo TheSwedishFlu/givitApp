@@ -171,6 +171,8 @@ public class ItemController {
         return "givitTeam";
     }
 
+
+
     @GetMapping("/registerUser")
     String registerUser(Model model){
         model.addAttribute("newAccount",new Account());
@@ -241,5 +243,61 @@ public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "\\src\
         itemRepository.save(item);
         return "redirect:/items";
     }
+    @GetMapping("/accItemList")
+    String getAccItemList(Model model, HttpSession session, HttpServletRequest currentSession){
 
-}
+        String acc =(String) session.getAttribute("account");
+        List<Account> allAcc = accountRepository.findAll();
+        List<Item> allItem = itemRepository.findAll();
+        List<Item> addedItems = new ArrayList<>();
+
+        Account theAcc= new Account();
+        for (Account account : allAcc) {
+            if (account.getEmail().equals(acc)){
+                theAcc=account;
+                System.out.println("the acc found is: "+theAcc);
+            }
+        }
+
+        for (Item item : allItem) {
+            if (theAcc.getOrgnr()== item.getOrgnr()){
+                addedItems.add(item);
+                System.out.println("added item: "+item);
+            }
+        }
+
+        if(addedItems==null){
+            addedItems=new ArrayList<>();
+        }
+        session.setAttribute("shoppingList",addedItems);
+        model.addAttribute("session",session);
+
+        return "accItemList";
+    }
+
+    @PostMapping("/accItemList")
+    String postAccItemList(@RequestParam int remove, Model model, HttpSession session, HttpServletRequest currentSession) {
+
+        currentSession.getSession();
+            Item foundItem = null;
+            List<Item> addedItems = (List<Item>) session.getAttribute("shoppingList");
+            for (Item item : addedItems) {
+                if (item.getId() == remove) {
+                    foundItem = item;
+                    //itemRepository.save(item);
+                    itemRepository.delete(item);
+                }
+            }
+
+            if (foundItem != null) {
+                addedItems.remove(foundItem);
+            }
+            //Item removedFromShoppingList=itemRepository.findById(remove);
+            System.out.println("Item added to repository:");
+
+            return "accItemList";
+        }
+
+    }
+
+//Test
