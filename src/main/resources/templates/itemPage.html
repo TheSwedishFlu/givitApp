@@ -20,13 +20,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/items">Available items</a>
+                    <a class="nav-link active" aria-current="page" href="/items">Tillgängliga Annonser</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/createItem">Create an Item</a>
+                    <a class="nav-link" href="/createItem">Skapa ny annons</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/myAccount">Edit Account</a>
+                    <a class="nav-link" href="/myAccount">Mina Sidor</a>
                 </li>
                 <!--<li class="nav-item">
                     <a class="nav-link" href="#">NewUser</a>
@@ -35,7 +35,7 @@
             </ul>
             <div class="container-fluid">
                 <form  th:action="@{/logoutuser}"  method="get"  class="d-flex" role="search">
-                    <button class="btn btn-outline-success" type="submit">Logout</button>
+                    <button class="btn btn-outline-success" type="submit">Logga ut</button>
                 </form>
             </div>
         </div>
@@ -43,19 +43,19 @@
     </div>
     </div>
 </nav>
-<p th:text="${'Logged in as: ' + session.Username}"></p>
+<p th:text="${'Användare: ' + session.Username}"></p>
 
 
 <form action="/items" method="post" >
 Filter: <select th:if="${session.city}=='City'" class="form-select city btn" name="city" >
-    <option selected class="cityOption btn" value="City">City</option>
+    <option selected class="cityOption btn" value="City">Stad</option>
     <option class="city-option btn"  value="Göteborg">Göteborg</option>
     <option class="city-option btn"  value="Malmö">Malmö</option>
     <option class="city-option btn"  value="Stockholm">Stockholm</option>
     <!--<option class="city-option btn"  value="Övriga">Övriga</option>-->
 </select>
     <select th:if="${session.city}!='City'" class="form-select city btn" name="city" >
-        <option class="cityOption btn" value="City">City</option>
+        <option class="cityOption btn" value="City">Stad</option>
         <option th:selected="(${session.city}=='Göteborg')" class="city-option btn"  value="Göteborg">Göteborg</option>
         <option th:selected="(${session.city}=='Malmö')" class="city-option btn"  value="Malmö">Malmö</option>
         <option th:selected="(${session.city}=='Stockholm')" class="city-option btn"  value="Stockholm">Stockholm</option>
@@ -66,16 +66,16 @@ Filter: <select th:if="${session.city}=='City'" class="form-select city btn" nam
     <div class="input-group mb-3" >
         <div class="input-group-prepend">
             <div class="input-group-text">
-                Delivery type: <input th:if="${session.delivery}!='Collect'"  type="checkbox" aria-label="Checkbox" value="Collect" name="delivery" >
-                <input th:if="${session.delivery}=='Collect'" checked type="checkbox" aria-label="Checkbox" value="Collect" name="delivery"  >Collect
+                Leveranssätt: <input th:if="${session.delivery}!='Collect'"  type="checkbox" aria-label="Checkbox" value="Collect" name="delivery" >
+                <input th:if="${session.delivery}=='Collect'" checked type="checkbox" aria-label="Checkbox" value="Collect" name="delivery"  >Hämtas
                 <input th:if="${session.delivery}!='Delivery'" type="checkbox" aria-label="Checkbox" value="Delivery" name="delivery" >
-                <input th:if="${session.delivery}=='Delivery'" checked type="checkbox" aria-label="Checkbox" value="Delivery" name="delivery" >Delivery
+                <input th:if="${session.delivery}=='Delivery'" checked type="checkbox" aria-label="Checkbox" value="Delivery" name="delivery" >Levereras
             </div>
         </div>
     </div>
 
-    <input type="submit" value="Apply Filter">
-    <input type="submit" value="Clear filters" name="clear">
+    <input type="submit" value="Filtrera">
+    <input type="submit" value="Rensa filter" name="clear">
 
 </form>
 
@@ -93,8 +93,8 @@ Filter: <select th:if="${session.city}=='City'" class="form-select city btn" nam
                     <h5 class="card-title" th:text="${item.name}">Item title</h5>
                     <p class="card-text" th:text="${item.description}">This is a wider card with supporting text below
                         as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <span class="badge text-bg-light" th:text="' Qty: ' + ${item.qty} +' st'">Light</span>
-                    <span class="badge text-bg-light" th:text="'Company: Academy'">Light</span>
+                    <span class="badge text-bg-light" th:text="' Antal: ' + ${item.qty} +' st'">Light</span>
+                    <span class="badge text-bg-light" th:text="'Företag: Academy'">Light</span>
                     <p class="card-text"><small class="text-muted" th:text="${item.location} + ', ' + ${item.deliveryType}">Last updated 3
                         mins ago</small></p>
                 </div>
