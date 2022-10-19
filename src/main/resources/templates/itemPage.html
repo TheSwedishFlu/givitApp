@@ -66,10 +66,10 @@ Filter: <select th:if="${session.city}=='City'" class="form-select city btn" nam
     <div class="input-group mb-3" >
         <div class="input-group-prepend">
             <div class="input-group-text">
-                Leveranssätt: <input th:if="${session.delivery}!='Collect'"  type="checkbox" aria-label="Checkbox" value="Collect" name="delivery" >
-                <input th:if="${session.delivery}=='Collect'" checked type="checkbox" aria-label="Checkbox" value="Collect" name="delivery"  >Hämtas
-                <input th:if="${session.delivery}!='Delivery'" type="checkbox" aria-label="Checkbox" value="Delivery" name="delivery" >
-                <input th:if="${session.delivery}=='Delivery'" checked type="checkbox" aria-label="Checkbox" value="Delivery" name="delivery" >Levereras
+                Leveranssätt: <input th:if="${session.delivery}!='Collect'"  type="checkbox" aria-label="Checkbox" value="Hämtas" name="delivery" >
+                <input th:if="${session.delivery}=='Collect'" checked type="checkbox" aria-label="Checkbox" value="Hämtas" name="delivery"  >Hämtas
+                <input th:if="${session.delivery}!='Delivery'" type="checkbox" aria-label="Checkbox" value="Levereras" name="delivery" >
+                <input th:if="${session.delivery}=='Delivery'" checked type="checkbox" aria-label="Checkbox" value="Levereras" name="delivery" >Levereras
             </div>
         </div>
     </div>
