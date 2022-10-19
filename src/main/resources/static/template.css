@@ -24,14 +24,16 @@ h2{
         flex-direction: column;
         align-item: center;
     }
-   div.container-fluid{
+   .container-fluid{
         display:flex;
         flex-direction: column;
+        align left;
+        white-space: nowrap;
    }
 
    .navbar-nav{
-        display:flex;
-        flex-direction: row;
+        //display:flex;
+        //flex-direction: row;
         }
 
 .backButton {
@@ -46,6 +48,11 @@ h2{
 
 select.form-select.city.btn:hover{
     background-color: #fba115;
+}
+
+.loggeduser{
+    margin-left: 30px;
+    font-family: Bahnschrift;
 }
 
 
