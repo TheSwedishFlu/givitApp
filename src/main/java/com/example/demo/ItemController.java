@@ -155,7 +155,7 @@ public class ItemController {
             addedItems.remove(foundItem);
         }
             //Item removedFromShoppingList=itemRepository.findById(remove);
-        System.out.println("Item added to repository:");
+        System.out.println("Item added to repository:" +foundItem.getName());
 
 
 

@@ -1,6 +1,21 @@
+
+
 h2{
     margin-left: 30px;
     font-family: Bahnschrift SemiBold;
+}
+.h6, h6, h6.filtering{
+    margin-left: 30px;
+color:#6610f2!important;
+}
+.d-flex.p-2 {
+    display: flex;
+    align-items: center;
+    border-radius: 25px!important;
+}
+
+div.d-flex img.item-details-corners {
+    border-radius: 25px!important;
 }
 
 .givitTeam {
@@ -30,10 +45,31 @@ h2{
         align left;
         white-space: nowrap;
    }
+   /*more detailed maning below */
+   div.container-fluid{
+       display:flex;
+       align-items: flex-end;
+       flex-direction: column;
+}
+.container-fluid.item-details {
+    display: flex!important;
+    flex-direction: column!important;
+    white-space: nowrap!important;
 
+}
+
+select.form-select.city.btn {
+    border: solid 1px;
+    border-color: #6610f296;
+    margin-bottom: 10px;
+    width: 17pc;
+    line-height: normal;
+    align-content: flex-start;
+}
    .navbar-nav{
-        //display:flex;
-        //flex-direction: row;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
         }
 
 .backButton {
@@ -47,12 +83,21 @@ h2{
 }
 
 select.form-select.city.btn:hover{
-    background-color: #fba115;
+    background-color: #6610f296;
 }
 
 .loggeduser{
     margin-left: 30px;
     font-family: Bahnschrift;
+}
+
+div.input-group-text{
+    background-color: #6610f296;
+}
+
+.input-group.mb-3 {
+    /* line-height: normal; */
+    height: 2.2pc;
 }
 
 
