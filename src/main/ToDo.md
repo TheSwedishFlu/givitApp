@@ -45,8 +45,15 @@ Haidar: fixar myaccount link lista för orgnr items
 Ulf: admin-sidan
 
 Feedback från presentation : 
-fixa filtreringen 
-Carten behöver skilja sig från items till utseenede för att man ska förstå att man är på en ny sida
-ha med mer teknisk överblick med mappning och kod (hur saker hänger ihop)
-Mer introduktion av Givit som app (första slide ?)- djupare intrduktion
+fixa filtreringen ->fixad
+Carten behöver skilja sig från items till utseende för att man ska förstå att man är på en ny sida
+ha med mer teknisk överblick med mappning och kod (hur saker hänger ihop)--> påbörjad (ej klar)
+Mer introduktion av Givit som app (första slide ?)- djupare introduction
 Fixa css så det är tydligt vilken sida du kommer till
+
+Onsdag: 
+Derya : fixa utseendet på carten enligt feedback 
+Tobias: Koppla item och account
+Mohamed: css
+Ulf: Översättning och css (intervju kl 15-16)
+Haidar: introduktion (intervju kl 11-13 och 14.30-15.30)
