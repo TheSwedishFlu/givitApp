@@ -25,17 +25,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/createItem">Skapa ny annons</a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="/registerUser">New User</a>
-                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/myAccount">Mina sidor</a>
+                </li>
             </ul>
-            <a class="nav-link" href="/cart">Kundvagn</a>
 
+
+        <div class="container-fluid">
+            <form  th:action="@{/logoutuser}"  method="get"  class="d-flex" role="search">
+                <button class="btn btn-outline-success" type="submit">Logga ut</button>
+            </form>
         </div>
+    </div>
 
     </div>
     </div>
 </nav>
+<p class= loggeduser th:text="${'Användare: ' + session.Username}"></p>
 <!--
 <table>
     <tr>
@@ -74,7 +80,7 @@
                     <span class="badge text-bg-light" th:text="'Company: Academy'"></span>
                     <p class="card-text"><small class="text-muted" th:text="${item.location} + ', ' + ${item.deliveryType}">Last updated 3
                         mins ago</small></p>
-                    <button type="submit" th:value="${item.id}" name="remove">Ta bort </button>
+                    <button type="submit" th:value="${item.id}" name="remove">Ta bort</button>
                 </div>
             </div>
         </div>
