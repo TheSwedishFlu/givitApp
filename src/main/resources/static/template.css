@@ -7,6 +7,7 @@ h2{
 .h6, h6, h6.filtering{
     margin-left: 30px;
 color:#6610f2!important;
+    margin-right:1pc;
 }
 .d-flex.p-2 {
     display: flex;
@@ -92,7 +93,14 @@ select.form-select.city.btn:hover{
 }
 
 div.input-group-text{
-    background-color: #6610f296;
+    color: #6610f296;
+    background-color:#ffffff;
+    border: solid 1px #6610f296;
+}
+
+div.input-group-text:hover{
+    color: #ffffff;
+    background-color:#6610f296;
 }
 
 .input-group.mb-3 {
@@ -100,5 +108,24 @@ div.input-group-text{
     height: 2.2pc;
 }
 
+div.submit-knappar {
+    margin-left: 30px;
+    margin-bottom: 2pc;
+}
+
+div.submit-knappar input.btn.btn-outline-secondary.filterknapp{
+    /*background-color: #6610f296;*/
+    border-color:#6610f296;
+
+}
+div.submit-knappar input.btn.btn-outline-secondary.filterknapp:hover{
+    background-color: #6610f296;
+
+
+}
+
+.card.mb-3.itemsList.result:hover{
+    border-color:#fba115;
+}
 
 
