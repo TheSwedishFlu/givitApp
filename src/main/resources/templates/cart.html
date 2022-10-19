@@ -65,9 +65,9 @@
 </table>
 -->
 <h1>Din Kundvagn</h1>
-<div class="kundvagn"><h4> Nedan varor är reserverade för din organisation: </h4>
+<div class="kundvagn"><h6 class="kundvagn"> Nedan varor är reserverade för din organisation: </h6>
     <form action="/cart" method="post">
-        <div class="card mb-3 itemsList result" style="max-width: 540px;" th:each="item : ${session.shoppingList}">
+        <div class="card mb-3 itemsList kundvagn-info" style="max-width: 540px;" th:each="item : ${session.shoppingList}">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img th:src="${item.image}" class="img-fluid rounded-start" alt="...">
@@ -79,16 +79,27 @@
                             below
                             as a natural lead-in to additional content. This content is a little bit longer.</p>
                         <span class="badge text-bg-light" th:text="' Antal: ' + ${item.qty} +' st'">Light</span>
-                        <span class="badge text-bg-light" th:text="'Company: Academy'"></span>
+                       <!-- <span class="badge text-bg-light" th:text="'Company: Academy'"></span>-->
                         <p class="card-text"><small class="text-muted"
                                                     th:text="${item.location} + ', ' + ${item.deliveryType}">Last
                             updated 3
                             mins ago</small></p>
-                        <button type="submit" th:value="${item.id}" name="remove">Ta bort</button>
+                        <button type="submit" th:value="${item.id}" name="remove" class="btn btn-outline-secondary taBort">Ta bort</button>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="d-flex flex-row mb-3">
+            <div class="p-2"><div class="backButton">
+                <button type="button" onclick="location.href='/items'; " class="btn btn-outline-secondary tillbaka">Tillbaka till annonser</button>
+            </div>
+            </div>
+            <div class="p-2"><button type="submit" name="confirm" value="bekräfta" class="btn btn-outline-secondary confirm">Bekräfta beställning</button>
+            </div>
+
+        </div>
+
+
 
 </form>
 </div>

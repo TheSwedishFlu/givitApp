@@ -1,18 +1,35 @@
 
-
+h1{
+/*#fba115*/
+    color:#6610f2;
+    margin-left: 30px;
+}
 h2{
     margin-left: 30px;
     font-family: Bahnschrift SemiBold;
 }
-.h6, h6, h6.filtering{
+.h6 h6.filtering{
     margin-left: 30px;
 color:#6610f2!important;
     margin-right:1pc;
 }
+h6.kundvagn{
+/*#fba115*/
+    margin-left: 30px;
+    color:#6610f2!important;
+
+}
+
 .d-flex.p-2 {
     display: flex;
     align-items: center;
     border-radius: 25px!important;
+        margin-left: 30px;
+
+}
+span.info-detaljer {
+    font-weight: bold;
+    color: orange;
 }
 
 div.d-flex img.item-details-corners {
@@ -82,9 +99,15 @@ select.form-select.city.btn {
     margin-left: 30px;
     margin-right: 50%;
 }
+select.form-select.city.btn{
+        color: #6c757d;
+
+}
 
 select.form-select.city.btn:hover{
     background-color: #6610f296;
+        color: #ffffff;
+
 }
 
 .loggeduser{
@@ -127,5 +150,57 @@ div.submit-knappar input.btn.btn-outline-secondary.filterknapp:hover{
 .card.mb-3.itemsList.result:hover{
     border-color:#fba115;
 }
+.card.mb-3.itemsList.kundvagn-info{
+    /*border-color:#fba115; #fba11575*/
+    background-color: #fba1153b;
+}
 
+h1.item-detail-title{
+        margin-left: 30px;
+        color: orange;
+
+}
+
+button.btn.btn-outline-secondary.reservera{
+color:tomato;
+border: solid 1px tomato;
+}
+
+button.btn.btn-outline-secondary.reservera:hover{
+    background-color:tomato;
+    color: #ffffff;
+    border: solid 1px tomato;
+}
+
+button.btn.btn-outline-secondary.tillbaka{
+color:orange;
+    border: solid 1px orange;
+}
+button.btn.btn-outline-secondary.tillbaka:hover {
+    color: #ffffff;
+    background-color:orange;
+}
+button.btn.btn-outline-secondary.taBort{
+color:tomato;
+border: solid 1px tomato;
+}
+
+button.btn.btn-outline-secondary.taBort:hover{
+background-color:tomato;
+    color: #ffffff;
+    border: solid 1px tomato;
+}
+
+button.btn.btn-outline-secondary.confirm{
+color:limegreen;
+border: solid 1px limegreen;
+}
+button.btn.btn-outline-secondary.confirm:active{
+background-color:limegreen;
+    color: #ffffff;
+border: solid 1px limegreen;
+}
+button.btn.btn-outline-secondary.confirm:hover{
+background-color:#ffffff;
+}
 
