@@ -14,10 +14,18 @@ h2.mina-annonser{
         color:#6610f2;
 
 }
-.h6 h6.filtering{
-    margin-left: 30px;
-color:#6610f2!important;
-    margin-right:1pc;
+.h6, h6 {
+    font-size: 1rem;
+    margin-left: 30px!important;
+    margin-right:1pc!important;
+    color:#6610f2!important;
+
+
+}
+ul.navbar-nav li.nav-item h6.filtering{
+    margin-left: 30px!important;
+    color:#6610f2!important;
+    margin-right:1pc!important;
 }
 h6.kundvagn{
 /*#fba115*/
