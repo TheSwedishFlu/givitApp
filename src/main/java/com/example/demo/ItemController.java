@@ -246,7 +246,7 @@ public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "\\src\
     @GetMapping("/accItemList")
     String getAccItemList(Model model, HttpSession session, HttpServletRequest currentSession){
 
-        String acc =(String) session.getAttribute("account");
+        String acc =(String) session.getAttribute("Username");
         List<Account> allAcc = accountRepository.findAll();
         List<Item> allItem = itemRepository.findAll();
         List<Item> addedItems = new ArrayList<>();
@@ -259,7 +259,9 @@ public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "\\src\
             }
         }
 
+        System.out.println("acc orgNr: "+theAcc.getOrgnr());
         for (Item item : allItem) {
+            System.out.println(item.getOrgnr());
             if (theAcc.getOrgnr()== item.getOrgnr()){
                 addedItems.add(item);
                 System.out.println("added item: "+item);
@@ -272,6 +274,7 @@ public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "\\src\
         session.setAttribute("shoppingList",addedItems);
         model.addAttribute("session",session);
 
+        System.out.println("itemList klar");
         return "accItemList";
     }
 

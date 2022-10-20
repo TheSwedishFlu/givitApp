@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 
 @Controller
@@ -30,6 +31,8 @@ public class AccountController {
     @Autowired
     private DataSource dataSource;
 
+    @Autowired
+    ItemRepository itemRepository;
     @Autowired
     AccountRepository accountRepository;
     @GetMapping("/myAccount")
@@ -44,6 +47,14 @@ public class AccountController {
         String acc = (String) session.getAttribute("account");
         Account overRideAcc=accountRepository.findByEmail(acc);
         model.addAttribute("editAcc", editAcc);
+
+        List<Item> itemList= itemRepository.findAll();
+        for (Item item : itemList) {
+            if (item.getOrgnr()==overRideAcc.getOrgnr()){
+                item.setOrgnr(editAcc.getOrgnr());
+                System.out.println("bytt orgNr fran: "+overRideAcc.getOrgnr()+"_till: "+item.getOrgnr());
+            }
+        }
 
         accountRepository.save(editAcc);
         accountRepository.delete(overRideAcc);
