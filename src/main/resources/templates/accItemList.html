@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Cart</title>
-    <link rel="stylesheet" href="template.css">
+    <link rel="stylesheet" href="/template.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
@@ -74,7 +74,9 @@
                     <!--<span class="badge text-bg-light" th:text="'Company: Academy'"></span>-->
                     <p class="card-text"><small class="text-muted" th:text="${item.location} + ', ' + ${item.deliveryType}">Last updated 3
                         mins ago</small></p>
-                    <button type="submit" th:value="${item.id}" name="remove" class="btn btn-outline-secondary taBort">Radera annons</button>
+                    <div class="container tooltip tooltiptext">Om du klickar här raderas din annons och du kan inte få tillbaka den
+                    <button type="submit" th:value="${item.id}" name="remove" class="btn btn-outline-secondary radera-annons">Radera annons</button></div>
+
                 </div>
             </div>
         </div>

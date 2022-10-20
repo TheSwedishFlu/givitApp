@@ -1,0 +1,57 @@
+/* Nedan tillagt av Derya 20-10-2022*/
+
+div.card.mb-3.itemsList.mina-annonser-lista{
+
+
+}
+
+div.tooltip.tooltiptext button.btn.btn-outline-secondary.radera-annons{
+color:tomato;
+border: solid 1px tomato;
+}
+div.tooltip.tooltiptext button.btn.btn-outline-secondary.radera-annons:hover{
+background-color:tomato;
+    color: #ffffff;
+    border: solid 1px tomato;
+    }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  opacity: 0;
+  transition: opacity 1s;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
