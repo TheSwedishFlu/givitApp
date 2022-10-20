@@ -58,9 +58,9 @@
     </tr>
 </table>
 -->
-<div> Below items are reserved for your organization: </div>
+<h2 class="mina-annonser"> Mina publicerade annonser: </h2>
 <form action="/accItemList" method="post">
-<div class="card mb-3 itemsList result" style="max-width: 540px;" th:each="item : ${session.shoppingList}">
+<div class="card mb-3 itemsList mina-annonser-lista" style="max-width: 540px;" th:each="item : ${session.shoppingList}">
         <div class="row g-0">
             <div class="col-md-4">
                 <img th:src="${item.image}" class="img-fluid rounded-start" alt="...">
@@ -70,11 +70,11 @@
                     <h5 class="card-title" th:text="${item.name}">Item title</h5>
                     <p class="card-text" th:text="${item.description}">This is a wider card with supporting text below
                         as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <span class="badge text-bg-light" th:text="' Qty: ' + ${item.qty} +' st'">Light</span>
-                    <span class="badge text-bg-light" th:text="'Company: Academy'"></span>
+                    <span class="badge text-bg-light" th:text="' Antal: ' + ${item.qty} +' st'">Light</span>
+                    <!--<span class="badge text-bg-light" th:text="'Company: Academy'"></span>-->
                     <p class="card-text"><small class="text-muted" th:text="${item.location} + ', ' + ${item.deliveryType}">Last updated 3
                         mins ago</small></p>
-                    <button type="submit" th:value="${item.id}" name="remove">Remove </button>
+                    <button type="submit" th:value="${item.id}" name="remove" class="btn btn-outline-secondary taBort">Radera annons</button>
                 </div>
             </div>
         </div>
