@@ -4,40 +4,66 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 @Controller
-    public class AccountController {
+public class AccountController {
 
-        Logger logger = LoggerFactory.getLogger(AccountController.class);
+    Logger logger = LoggerFactory.getLogger(AccountController.class);
 
-        @Autowired
-        private DataSource dataSource;
+    @Autowired
+    private DataSource dataSource;
 
-
-        @GetMapping("/myAccount")
-        String myAccount(){
-            logger.info("myAccount is running");
-            return "myAccount";
-        }
-
-        @GetMapping("/admin")
-        String admin(){
-            logger.info("admin is running");
-            return "admin";
-        }
-
-        @GetMapping("/logoutuser")
-        public String logout(HttpSession session, HttpServletResponse res)
-        {
-            session.removeAttribute("Username");
-            return "redirect:/";
-        }
-
-
+    @Autowired
+    AccountRepository accountRepository;
+    @GetMapping("/myAccount")
+    String myAccount(Model model) {
+        model.addAttribute("editAcc",new Account());
+        return "myAccount";
     }
+    @PostMapping("/myAccount")
+    String myAccountSave(HttpServletRequest req, HttpServletResponse res ,Model model, @ModelAttribute Account editAcc) {
+
+        HttpSession session = req.getSession();
+        String acc = (String) session.getAttribute("account");
+        Account overRideAcc=accountRepository.findByEmail(acc);
+        model.addAttribute("editAcc", editAcc);
+
+        accountRepository.save(editAcc);
+        accountRepository.delete(overRideAcc);
+        System.out.println("acc saved");
+        session.setAttribute("Username",editAcc.getEmail());
+
+        return "myAccount";
+    }
+
+    @GetMapping("/admin")
+    String admin() {
+        logger.info("admin is running");
+        return "admin";
+    }
+
+    @GetMapping("/logoutuser")
+    public String logout(HttpSession session, HttpServletResponse res) {
+        session.removeAttribute("Username");
+        return "redirect:/";
+    }
+
+
+}
