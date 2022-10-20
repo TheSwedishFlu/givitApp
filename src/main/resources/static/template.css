@@ -218,3 +218,21 @@ button.btn.btn-outline-secondary.confirm:hover{
 background-color:#ffffff;
 }
 
+/* Nedan tillagt av Derya 20-10-2022*/
+
+div.card.mb-3.itemsList.mina-annonser-lista {
+    border-color: orange;
+    border: orange;
+    border-style: dashed;
+}
+
+ button.btn.btn-outline-secondary.radera-annons{
+color:tomato;
+border: solid 1px tomato;
+}
+ button.btn.btn-outline-secondary.radera-annons:hover{
+background-color:tomato;
+    color: #ffffff;
+    border: solid 1px tomato;
+    }
+
