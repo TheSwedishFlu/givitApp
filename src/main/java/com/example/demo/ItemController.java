@@ -141,7 +141,7 @@ public class ItemController {
     }
 
     @PostMapping("/cart")
-    String cartEdits(@RequestParam (required = false)int remove,@RequestParam String confirm, Model model, HttpSession session, HttpServletRequest currentSession){
+    String cartEdits(@RequestParam int remove, Model model, HttpSession session, HttpServletRequest currentSession){
         currentSession.getSession();
         Item foundItem=null;
         List<Item> addedItems= (List<Item>) session.getAttribute("shoppingList");
@@ -157,9 +157,6 @@ public class ItemController {
             //Item removedFromShoppingList=itemRepository.findById(remove);
         System.out.println("Item added to repository:" +foundItem.getName());
 
-        if(confirm!=null){
-            System.out.println("Order bekräftad");
-        }
 
         return "cart";
     }
