@@ -74,10 +74,9 @@
         <p>Stad</p>
     <select id="location" name="location" th:field="*{location}"/>
     <label class="form-label">Location</label>
-        <option value="Övriga">Övriga</option>
     <option value="Göteborg">Göteborg</option>
     <option value="Malmö">Malmö</option>
-    <option value="Strockholm">Stockholm</option>
+    <option value="Stockholm">Stockholm</option>
 
     </select>
     </div>
@@ -86,8 +85,8 @@
         <p>Leveranstyp</p>
     <select id="deliveryType" name="deliveryType" th:field="*{deliveryType}"/>
     <label class="form-label">Delivery</label>
-        <option value="Collect">Upphämtning</option>
-        <option value="Delivery">Leverans</option>
+        <option value="Hämtas">Upphämtning</option>
+        <option value="Levereras">Leverans</option>
     </select>
     </div>
 
@@ -107,7 +106,7 @@
         <div>
         <label class="form-label">Bild</label>
         </div>
-        <input type="file" name="fileimage" accept="image/*" >
+        <input type="file" name="fileimage" accept="image/*">
     </div>
 
     <div class="mb-3">

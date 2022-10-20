@@ -60,6 +60,7 @@ public class AccountController {
         accountRepository.delete(overRideAcc);
         System.out.println("acc saved");
         session.setAttribute("Username",editAcc.getEmail());
+        session.setAttribute("account",editAcc.getEmail());
 
         return "myAccount";
     }

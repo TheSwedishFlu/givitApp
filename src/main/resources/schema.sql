@@ -15,7 +15,7 @@ create table Item(
   ID BIGINT AUTO_INCREMENT PRIMARY KEY,
   name nchar(50) not null,
   description nchar(600) not null,
-  category varchar(50) not null,
+  category varchar(50) null,
   location nchar(50) not null,
   qty bigint not null,
   delivery_type varchar(50) not null,
